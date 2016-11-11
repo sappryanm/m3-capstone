@@ -25,6 +25,8 @@ public class Park {
 	public void setParkCode(String parkCode) {
 		this.parkCode = parkCode;
 	}
+	
+	
 	public String getParkName() {
 		return parkName;
 	}

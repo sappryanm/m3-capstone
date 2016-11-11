@@ -21,17 +21,6 @@ public class JdbcSurveyDAO implements SurveyDAO {
 	public JdbcSurveyDAO(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
-
-//	@Override
-//	public List<Survey> getAllSurvey() {
-//		List<Survey> allSurveys = new ArrayList<Survey>();
-//		String sqlCountSurvey = "SELECT * FROM survey_result";
-//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlCountSurvey);
-//		while(results.next()) {
-//			allSurveys.add(mapRowToSurvey(results));
-//		}
-//		return allSurveys;
-//	}
 	
 	@Override
 	public Map<String, Integer> getAllSurveys() {

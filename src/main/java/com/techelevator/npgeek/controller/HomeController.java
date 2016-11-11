@@ -67,9 +67,8 @@ public class HomeController {
 			else {
 				tempPreference = false;
 			}			
-			
+					
 			map.addAttribute("tempPref", tempPreference);
-//			request.setAttribute("parkdetail", codeString);
 			request.setAttribute("weather", weather);
 
 			return "weather";
@@ -79,11 +78,12 @@ public class HomeController {
 		public String displayParkWeatherCelcius(@RequestParam String code, @RequestParam boolean tempPref, HttpServletRequest request, ModelMap map) {
 			weather = weatherDao.getParkWeather(code);
 			boolean tempPreference = tempPref;
+			String parkName = parkDao.getParkById(code).getParkName();
 			
 			map.replace("tempPref", tempPreference);
 			request.setAttribute("weather", weather);
 
-			return "redirect:/weather?code=" + code;
+			return "redirect:/weather?code=" + code + "&name=" + parkName;
 		}
 	
 		@RequestMapping(path={"/survey"}, method=RequestMethod.GET)
