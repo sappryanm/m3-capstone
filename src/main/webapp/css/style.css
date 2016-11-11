@@ -1,4 +1,7 @@
-body { padding-top: 50px; }
+body { 
+	padding-top: 50px;
+	padding-bottom: 50px; 
+	}
 
 #logo {
 	height: 25px;
@@ -7,4 +10,9 @@ body { padding-top: 50px; }
 
 .myText {
 	min-height: 300px !important;
+}
+
+.copyright {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

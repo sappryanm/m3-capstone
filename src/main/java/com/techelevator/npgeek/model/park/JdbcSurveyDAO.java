@@ -23,17 +23,13 @@ public class JdbcSurveyDAO implements SurveyDAO {
 	}
 	
 	@Override
-	public Map<String, Integer> getAllSurveys() {
-		Map<String, Integer> allSurveys = new HashMap<String, Integer>();
-		String sqlCountSurvey = "SELECT * FROM survey_result";
+	public List<Park> getAllSurveys() {
+		List<Park> allSurveys = new ArrayList<Park>();
+		String sqlCountSurvey = "SELECT park.parkName, park.parkCode, Count(survey_result.surveyId) AS votes FROM park Inner Join survey_result on park.parkCode = survey_result.parkcode GROUP BY parkName, park.parkCode ORDER BY votes Desc";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlCountSurvey);
 		while(results.next()) {
-			Survey survey = mapRowToSurvey(results);
-			int oldValue = 1;
-			if(allSurveys.containsKey(survey.getParkCode())) {
-				oldValue += allSurveys.get(survey.getParkCode());
-			}
-			allSurveys.put(survey.getParkCode(), oldValue);
+			Park park = new Park(results.getString("parkName"), results.getString("parkCode"), results.getInt("votes"));
+			allSurveys.add(park);
 		}
 		return allSurveys;
 	}

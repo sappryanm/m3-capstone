@@ -1,22 +1,30 @@
 <%@include file="header.jsp"%>
 
-<h1 id="welcome">Survey Results</h1>
-<ul>
-    <c:forEach var="park" items="${parks}">
-        <li class="park">
-        <c:url var="parkCampsitesHref" value="/parkDetail">
-            <c:param name="code" value="${park.parkCode}" />
-        </c:url>
-        <a href="${parkCampsitesHref}"> 
-        <c:url var="parkImgSrc" value="/img/parks/${park.parkCode.toLowerCase()}.jpg" /> 
-        <img src="${parkImgSrc}" />
-        </a>
-    <h2>
-        <a href="${parkCampsitesHref}"><c:out value="${park.parkName} National Park" /></a>
-    </h2>
-    <p><strong>State: </strong><c:out value="${park.state}"/></p>
-    <p><c:out value="${parkVotes.get(park.parkCode)} vote for ${park.parkName} National Park as favorite"/></p>     
-    </c:forEach>
-</ul>
+<%@ page import="java.awt.*" %>
+<%@ page import="javax.swing.*" %>
+<%@ page import="java.applet.*" %>
 
+
+
+<div class="container text-center">
+<h1 id="welcome">Most Popular Parks</h1>
+</div>
+<div class="container text-center">
+<c:forEach var="park" items="${surveys}">
+<%
+
+int R = (int) (Math.random( )*150);
+int G = (int)(Math.random( )*150);
+int B= (int)(Math.random( )*150);
+String randColor = "rgb(" + R + ", " + G + ", " + B + ")";
+
+%>
+<c:set var="voteCount" value="${park.getParkRating() / totalVotes}"></c:set>
+<h3>${park.parkName} National Park - ${park.getParkRating()}</h3>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" style="width: ${voteCount * 100}%; background-color: <%=randColor%>;">
+  </div>
+</div>
+</c:forEach>
+</div>
 <%@include file="footer.jsp"%>

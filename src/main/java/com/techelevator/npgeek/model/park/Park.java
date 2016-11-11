@@ -17,7 +17,25 @@ public class Park {
 	private String description;
 	private int entryFee;
 	private int numberOfAnimalSpecies;
+	private int rating;
 	
+	public Park() {
+		
+	}
+	
+	public Park(String name, String code, int rating) {
+		this.parkName = name;
+		this.parkCode = code;
+		this.rating = rating;
+	}
+	
+	public int getParkRating() {
+		return rating;
+	}
+	
+	public void setParkRating(int rating) {
+		this.rating = rating;
+	}
 	
 	public String getParkCode() {
 		return parkCode;

@@ -1,13 +1,20 @@
 <%@include file="header.jsp"%>
 
   <section id="main-content">
-  <h2>National Park Survey</h2>
   
+ <div class="container">
+ <div class="row">
+ <div class="col-xs-4 col-sm-4"></div>
+ <div class="col-xs-8 col-sm-8">
+ <h2>National Park Survey</h2>
+ </div>
+ </div>
+ <div class="row">
   <c:url var="surveyResult" value="/survey" />
-  <form action="${surveyResult}" method="POST">
+  <form class="form-horizontal" action="${surveyResult}" method="POST">
     <div class="form-group">
-    <label for="chooseAPark">Choose a Park </label>
-    <select name="parkCode">  
+    <label class="col-xs-4 col-sm-4 control-label" for="chooseAPark">Choose a Park </label>
+    <select class="col-xs-4 col-sm-4" name="parkCode">  
       <option value="GNP">Glacier</option>
       <option value="GCNP">Grand Canyon</option>
       <option value="MRNP">Mount Rainier</option>
@@ -21,13 +28,13 @@
     </div>
     
     <div class="form-group">
-    <label for="email">Enter Your Email </label>
-        <input type="text" name="email" id="email"/><br/>
+    <label class="col-xs-4 col-sm-4 control-label" for="email">Enter Your Email </label>
+        <input class="col-xs-4 col-sm-4" type="text" name="email" id="email"/><br/>
     </div>
 
     <div class="form-group">
-      <label for="state">State: </label> 
-      <select name="state" id="state">
+      <label class="col-xs-4 col-sm-4 control-label" for="state">State: </label> 
+      <select class="col-xs-4 col-sm-4" name="state" id="state">
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>
@@ -83,15 +90,18 @@
       </div>
       
       <div class="form-group">
-      <label for="activityLevel">Activity Level: </label> 
-      <select name="activityLevel" id="activityLevel">
+      <label class="col-xs-4 col-sm-4 control-label" for="activityLevel">Activity Level: </label> 
+      <select class="col-xs-4 col-sm-4" name="activityLevel" id="activityLevel">
         <option value="inactive">Inactive</option>
         <option value="sedentary">Sedentary</option>
         <option value="active">Active</option>
         <option value="extremelyActive">Extremely Active</option>
       </select>
       </div>
-    <button class="btn btn-default" type="submit">Submit Survey</button>
+      <div class="col-xs-4 col-sm-4"></div>
+    <button class="btn btn-primary col-xs-4 col-sm-4" type="submit">Submit Survey</button>
   </form>
+  </div>
+  </div>
   </section>
 <%@include file="footer.jsp"%>

@@ -6,9 +6,9 @@
 	<h1 id="welcome">${parkdetail.parkName}</h1>
 	<div class="row">
   		<div class="col-xs-6 col-md-6">
-    		<a href="#" class="thumbnail">
+    		<a href="#">
       			<c:url var="parkImgSrc" value="/img/parks/${parkdetail.parkCode.toLowerCase()}.jpg" /> 
-    			<img src="${parkImgSrc}" class="img-rounded"/>
+    			<img src="${parkImgSrc}" class="thumbnail img-rounded"/>
     		</a>
   		</div>
 	</div>

@@ -1,8 +1,10 @@
 package com.techelevator.npgeek.controller;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -110,23 +112,18 @@ public class HomeController {
 		
 		@RequestMapping("/surveyResults")
 		public String showSurveyResults(HttpServletRequest request) {
-			
+			int totalVotes = 0;
 			parks = parkDao.getAllParks();
-			Map<String, Integer> surveys = surveyDao.getAllSurveys();
-			Map<String, Integer> parkVotes = new HashMap<String, Integer>();
-			for(Park eachPark : parks) {
-				if (surveys.containsKey(eachPark.getParkCode())) {
-					parkVotes.put(eachPark.getParkCode(), surveys.get(eachPark.getParkCode()));
-				}
-				else {
-					parkVotes.put(eachPark.getParkCode(), 0);
-				}
-				
-			}
-			System.out.println(parkVotes.get("GNP"));
+			List<Park> surveys = surveyDao.getAllSurveys();
+
 			
-			request.setAttribute("parkVotes", parkVotes);
-			request.setAttribute("parks", parks);
+			for (Park item : surveys) {
+				totalVotes += item.getParkRating();
+			}
+			
+			
+			request.setAttribute("totalVotes", totalVotes);
+			request.setAttribute("surveys", surveys);
 			
 			return "surveyresults";
 		}

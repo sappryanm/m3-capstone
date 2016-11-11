@@ -5,7 +5,6 @@ import java.util.Map;
 
 public interface SurveyDAO {
 
-//	public List<Survey> getAllSurveys();
-	public Map<String, Integer> getAllSurveys();
+	public List<Park> getAllSurveys();
 	public void save(Survey survey);
 }

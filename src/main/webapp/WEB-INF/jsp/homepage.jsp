@@ -11,7 +11,7 @@
 	        </c:url>
 	        <a href="${parkCampsitesHref}"> 
 	        	<c:url var="parkImgSrc" value="/img/parks/${park.parkCode.toLowerCase()}.jpg" /> 
-	      		<img src="${parkImgSrc}" alt="parkPicture">
+	      		<img src="${parkImgSrc}" alt="parkPicture" class="thumbnail img-rounded">
 	      	</a>
 	      <div class="caption myText">
 	        <h3><a href="${parkCampsitesHref}"><c:out value="${park.parkName} National Park" /></a></h3>
